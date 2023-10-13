@@ -1,0 +1,62 @@
+<form method="get">
+
+    <label>Choice X:</label>
+    <br>
+    <input id="x4" type="radio" name="xChoice" value="x4"/>
+    <label for="x4">4</label>
+    <br>
+    <input id="x3" type="radio" name="xChoice" value="x3"/>
+    <label for="x3">3</label>
+    <br>
+    <input id="x2" type="radio" name="xChoice" value="x2"/>
+    <label for="x2">2</label>
+    <br>
+    <input id="x1" type="radio" name="xChoice" value="x1"/>
+    <label for="x1">1</label>
+    <br>
+    <input id="x0" type="radio" name="xChoice" value="x0"/>
+    <label for="x0">0</label>
+    <br>
+    <input id="x-1" type="radio" name="xChoice" value="x-1"/>
+    <label for="x-1">-1</label>
+    <br>
+    <input id="x-2" type="radio" name="xChoice" value="x-2"/>
+    <label for="x-2">-2</label>
+    <br>
+    <input id="x-3" type="radio" name="xChoice" value="x-3"/>
+    <label for="x-3">-3</label>
+    <br>
+    <input id="x-4" type="radio" name="xChoice" value="x-4"/>
+    <label for="x-4">-4</label>
+    <br>
+
+    <label for="y">Y</label>
+    <input id="y" type="number" name="yChoice" value="y"/>
+    <br>
+
+
+    <label>Choice R:</label>
+    <br>
+    <input id="r1" type="radio" name="rChoice" value="r1"/>
+    <label for="r1">1</label>
+    <br>
+
+    <input id="r2" type="radio" name="rChoice" value="r2"/>
+    <label for="r2">2</label>
+    <br>
+
+    <input id="r3" type="radio" name="rChoice" value="r3"/>
+    <label for="r3">3</label>
+    <br>
+
+    <input id="r4" type="radio" name="rChoice" value="r4"/>
+    <label for="r4">4</label>
+    <br>
+
+    <input id="r5" type="radio" name="rChoice" value="r5"/>
+    <label for="r5">5</label>
+    <br>
+
+
+    <button type="submit">Отправить</button>
+</form>

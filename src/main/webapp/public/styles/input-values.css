@@ -1,0 +1,9 @@
+input[name$="Choice"]:hover {
+    color: #db04f8;
+}
+
+input[name$="Choice"].active {
+    background-color: beige;
+}
+
+

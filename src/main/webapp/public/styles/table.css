@@ -1,0 +1,49 @@
+.tableContainer {
+    height: 300px;
+    overflow: auto;
+}
+
+table {
+    margin-top: 10px;
+    display: inline-block;
+    border-collapse: collapse;
+    width: auto;
+    background-image: url("../images/background-4.jpg");
+    opacity: 90%;
+
+
+    position: sticky;
+    /*float: right;*/
+}
+
+th, td {
+    border: 1px solid grey;
+    opacity: 70%;
+
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 1px 2px 2px #000;
+    /*mix-blend-mode: multiply;*/
+
+
+    padding: 5px
+    /*opacity: 80%;*/
+}
+
+/* Полоса прокрутки (основной фон) */
+::-webkit-scrollbar {
+    opacity: 50%;
+    width: 12px; /* Ширина полосы прокрутки */
+}
+
+/* Ползунок */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Цвет ползунка */
+    border-radius: 6px; /* Скругление углов ползунка */
+}
+
+/* Фон полосы прокрутки (под ползунком) */
+::-webkit-scrollbar-track {
+    opacity: 50%;
+    background: #f1f1f1; /* Цвет фона полосы прокрутки */
+}

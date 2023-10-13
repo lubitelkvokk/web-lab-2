@@ -1,0 +1,23 @@
+
+header{
+    font-family: monospace;
+    font-size: 5px;
+    color: red;
+}
+
+header{
+    text-align: center;
+    font-family: 'Rubik One', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    /*background: linear-gradient(70deg, #57342d, #0fdede);*/
+    display: table;
+    margin: 20px auto;
+    color: #f3f3f3;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 5px;
+    mix-blend-mode: multiply;
+    padding: 5px 10px;
+    background-image: url("../images/header.jpg");
+    opacity: 70%;
+}
