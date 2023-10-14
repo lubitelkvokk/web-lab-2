@@ -28,10 +28,18 @@ public class ControllerServlet extends HttpServlet {
         }
     }
 
+    @Override
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        doPost(request, response);
+    }
+
 
     private boolean checkCoords(HttpServletRequest request) throws IOException {
         Gson gson = new Gson();
         HittingParams requestBody = gson.fromJson(request.getReader(), utils.HittingParams.class);
+        if (requestBody == null){
+            return false;
+        }
         // Получение параметров из объекта requestBody
         Double x = requestBody.getX();
         Double y = requestBody.getY();
