@@ -16,15 +16,8 @@ export function getY(): HTMLInputElement {
 }
 
 export function getR() {
-    const rButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="rChoice"]');
-    for (let r of rButtons) {
-        if (r.classList.contains("active")) {
-            if (r.value) {
-                return r;
-            }
-        }
-    }
-    return document.createElement("input");
+    const r: HTMLInputElement | null = document.querySelector('input[name="rChoice"]');
+    return r !== null ? r :  document.createElement("input");
 }
 
 
