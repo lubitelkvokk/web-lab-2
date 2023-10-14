@@ -1,7 +1,7 @@
 #form-block{
     font-family: 'Rubik One', sans-serif;
     /*font-family: monospace;*/
-    width: 50%;
+    width: 55%;
     display: inline-block;
     float: right;
 }
@@ -9,7 +9,6 @@
 #form-block label{
 
     opacity: 70%;
-
     font-size: 20px;
     color: #ffffff;
     text-shadow: 1px 2px 2px #000;
@@ -17,7 +16,7 @@
 
 #form-block div[id$=-input-block] {
     opacity: 70%;
-    width: 500px;
+    width: 600px;
     display: inline-block;
     margin-top: 20px;
     /*vertical-align: top;*/
@@ -37,7 +36,11 @@
 }
 
 #y-input-block input{
-    width: 100px;
+    width: 180px;
+}
+
+#r-input-block input{
+    width: 180px;
 }
 
 #submit-container{
