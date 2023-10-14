@@ -1,5 +1,5 @@
 import validation from "./utils/Validation";
-import {rButtonListening, xButtonsListening} from "./specific_functions/ButtonsListening";
+import {xButtonsListening, yTextListening} from "./specific_functions/ButtonsListening";
 import {getR, getRErrorField, getX, getXErrorField, getY, getYErrorField} from "./specific_functions/SelectionResults";
 import graphClickListener from "./utils/GraphClickCoordinates";
 
@@ -9,18 +9,14 @@ import graphClickListener from "./utils/GraphClickCoordinates";
 let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 //Прослушивание кнопки X
 xButtonsListening();
-//Прослушивание кнопки R
-rButtonListening();
+
+//Проверка на change Y
+yTextListening();
 
 
 graphClickListener();
-// const graphRoom = document.querySelector("svg")
-// graphRoom!.addEventListener('mousedown', function(event: MouseEvent) {
-//     let x = event.clientX;
-//     let y = event.clientY;
-//
-//     console.log('Координаты мыши: x = ' + x + ', y = ' + y);
-// } as EventListener);
+
+
 fetch(`https://se.ifmo.ru/~s367403/lab1/getTable.php`)
     .then(response => response.text())
     .then(data => {
