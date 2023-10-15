@@ -1,15 +1,15 @@
 package utils;
 
-public class HittingParams {
+public class PointRequestBody {
     private Double x;
     private Double y;
     private Double r;
-
-    public HittingParams() {
+    private String timeZone;
+    public PointRequestBody() {
 
     }
 
-    public HittingParams(Double x, Double y, Double r) {
+    public PointRequestBody(Double x, Double y, Double r, String timeZone) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -40,4 +40,11 @@ public class HittingParams {
     }
 
 
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
 }
