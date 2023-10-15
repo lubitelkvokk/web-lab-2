@@ -18,15 +18,6 @@ rTextListening();
 graphClickListener();
 
 
-fetch(`https://se.ifmo.ru/~s367403/lab1/getTable.php`)
-    .then(response => response.text())
-    .then(data => {
-        updateTable(data);
-    })
-    .catch(reason => {
-        console.error(reason)
-    })
-
 
 document.querySelector("#form-submit")?.addEventListener("click", function () {
     let validation_result = validation(getX(), getY(), getR(), getXErrorField(), getYErrorField(), getRErrorField());
