@@ -1,3 +1,6 @@
+<%@ page import="beans.Row" %>
+<jsp:useBean id="table" scope="session" type="beans.Table"/>
+<%--<%@ page import="beans.Row" %>--%>
 <% String path = "public";%>
 <!doctype html>
 <html lang="en">
@@ -18,7 +21,7 @@
 <body class="main_page">
 
 <jsp:include page="public/header.html"/>
-<jsp:include page="public/graph.html"/>
+<jsp:include page="public/graph.jsp"/>
 <div id="form-block">
     <div class="input-block" id="x-input-block">
         <label>
@@ -78,6 +81,22 @@
     </div>
     <div class="tableContainer">
         <table id="hit-results">
+            <% for (Row row : table.getTable()) {%>
+            <tr>
+                <td><%= row.getX()%>
+                </td>
+                <td><%= row.getY()%>
+                </td>
+                <td><%= row.getR()%>
+                </td>
+                <td><%= row.getCurrentTime()%>
+                </td>
+                <td><%= row.getScriptRuntime()%>
+                </td>
+                <td><%= row.getIsHit()%>
+                </td>
+            </tr>
+            <% } %>
         </table>
     </div>
 
