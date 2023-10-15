@@ -1,8 +1,8 @@
 import {getR, getX, getY} from "./SelectionResults";
 
-export function getTable() {
+export function getTable(x: number, y: number, r: number) {
     let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    fetch(`https://se.ifmo.ru/~s367403/lab1/index.php?x=${getX()?.value}&y=${getY()!.value.slice(0, 13)}&r=${getR()?.value}&timeZone=${timeZone}`)
+    fetch(`https://se.ifmo.ru/~s367403/lab1/index.php?x=${x}&y=${y}&r=${r}&timeZone=${timeZone}`)
         .then(response => response.text())
         .then(data => {
             updateTable(data);
