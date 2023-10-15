@@ -1,4 +1,4 @@
-import {getR, getX, getY} from "../specific_functions/SelectionResults";
+import {getR, getValue, getX, getY} from "../specific_functions/SelectionResults";
 import {cleanAllErrors, validateInputElement, validateR} from "./Validation";
 import {getTable} from "../specific_functions/Table";
 
@@ -7,7 +7,7 @@ const graphRoom = document.querySelector(".svg-graph")
 export default function graphClickListener() {
 
     graphRoom!.addEventListener('mousedown', function (event: MouseEvent) {
-        cleanAllErrors();
+        // cleanAllErrors();
         let isValid = validateR();
         if (isValid) {
             if (graphRoom !== null) {
@@ -17,9 +17,11 @@ export default function graphClickListener() {
 
                 [x, y] = pointScaling(x, y);
 
-                setX(x);
-                setY(y);
-                getTable();
+                // setX(x);
+                setXPointCoord(x);
+                setYPointCoord(y);
+                // setY(y);
+                getTable(x, y, parseFloat(getValue(getR()).slice(0,13)));
 
             } else {
 
@@ -27,12 +29,11 @@ export default function graphClickListener() {
             }
         }
 
-
     } as EventListener);
 }
 
 function pointScaling(x: number, y: number) {
-    let r: number = parseFloat(getR().value);
+    let r: number = parseFloat(getValue(getR()));
     console.log(r)
     if (!r) {
 
@@ -46,11 +47,13 @@ function pointScaling(x: number, y: number) {
 }
 
 
+// На случай, если нужно устанавливать в поле X значение, полученное кликом по графику
 function setX(x: number) {
     const xButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="xChoice"]');
     let selectedXButton: HTMLInputElement | null = document.querySelector("#x-2");
     let minDifference = 9999999999;
     xButtons.forEach(button => {
+
         if (button !== null) {
             button.classList.remove("active");
         }
@@ -60,7 +63,8 @@ function setX(x: number) {
             selectedXButton = button;
             setXPointCoord(parseFloat(selectedXButton.value));
         }
-    });
+    }
+    );
 
     if (selectedXButton != null) {
         selectedXButton.classList.add("active");
@@ -77,6 +81,7 @@ export function setXPointCoord(x: number) {
 }
 
 
+// На случай, если нужно устанавливать в поле Y значение, полученное кликом по графику
 function setY(y: number) {
     let labelY: HTMLInputElement | null = document.querySelector("#y");
 
