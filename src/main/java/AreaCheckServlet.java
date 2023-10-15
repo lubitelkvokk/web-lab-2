@@ -40,10 +40,7 @@ public class AreaCheckServlet extends HttpServlet {
         int minute = calendar.get(Calendar.MINUTE);
         int second = calendar.get(Calendar.SECOND);
 
-        Table table = (Table) request.getSession().getAttribute("table");
-        if (table == null) {
-            table = new Table();
-        }
+
         long endTime = System.nanoTime();
         long scriptRuntime = (endTime - startTime);
 
@@ -52,24 +49,23 @@ public class AreaCheckServlet extends HttpServlet {
                 r,
                 timeZone + ": " + hour + ":" + minute + ":" + second,
                 scriptRuntime, isHit);
-        table.getTable().add(lastCheck);
 
-//        request.getSession().setAttribute("lastCheck", lastCheck);
+        Table table = (Table) request.getSession().getAttribute("table");
+        table.getTable().add(lastCheck);
         request.getSession().setAttribute("table", table);
+
 
         request.getSession().setAttribute("lastCheck", lastCheck);
 
-//        request.setAttribute("lastCheck", lastCheck);
-
         response.setStatus(HttpServletResponse.SC_FOUND); // Установка кода состояния 302 (Found)
-        System.out.println(request.getContextPath() + "/result");
+
         response.sendRedirect(request.getContextPath() + "/result");
 //        getServletContext().getRequestDispatcher("/result").forward(request, response);
     }
 
     private boolean isHit(Double x, Double y, Double r) {
         boolean isHit = false;
-        if ((x * x + y * y >= r * r) && x <= 0d && y >= 0d) {
+        if (((x * x + y * y) <= r * r) && x <= 0d && y >= 0d) {
             isHit = true;
         }
         if (x >= 0d && y >= 0d && x <= r && y <= r) {
