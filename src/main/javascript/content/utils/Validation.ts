@@ -1,3 +1,5 @@
+import {getRErrorField, getXErrorField, getYErrorField} from "../specific_functions/SelectionResults";
+
 export default function validation(x: HTMLInputElement | null, y: HTMLInputElement | null, r: HTMLInputElement | null,
                                    xError: Element | null, yError: Element | null, rError: Element | null) {
 
@@ -72,4 +74,28 @@ export function validateInputElement(r: HTMLInputElement | null, rError: Element
         }
     }
     return isValid;
+}
+
+
+export function validateR(){
+    return validateInputElement(document.querySelector("#r"),
+        getRErrorField(),
+        2,
+        5);
+}
+
+export function cleanAllErrors(){
+    let x_error =  getXErrorField()
+    let y_error =  getYErrorField()
+    let r_error =  getRErrorField()
+    console.log(y_error!.textContent);
+    if (x_error !== null){
+        x_error.textContent = "";
+    }
+    if (y_error !== null){
+        y_error.textContent = "";
+    }
+    if (r_error !== null){
+        r_error.textContent = "";
+    }
 }
