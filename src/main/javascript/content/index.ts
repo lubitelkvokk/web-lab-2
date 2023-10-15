@@ -5,8 +5,6 @@ import graphClickListener from "./utils/GraphClickCoordinates";
 import {getTable, updateTable} from "./specific_functions/Table";
 
 
-
-
 let timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 //Прослушивание кнопки X
 xButtonsListening();
@@ -33,11 +31,12 @@ fetch(`https://se.ifmo.ru/~s367403/lab1/getTable.php`)
 document.querySelector("#form-submit")?.addEventListener("click", function () {
     let validation_result = validation(getX(), getY(), getR(), getXErrorField(), getYErrorField(), getRErrorField());
     if (validation_result) {
-        getTable();
+        let x = parseFloat(getX().value);
+        let y = parseFloat(getY().value.slice(0, 13));
+        let r = parseFloat(getR().value.slice(0, 13));
+        getTable(x, y, r);
     }
 })
-
-
 
 
 function addRowToTable(html: string) {
