@@ -8,11 +8,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
-import utils.HittingParams;
+import utils.PointRequestBody;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ControllerServlet extends HttpServlet {
     @Override
@@ -36,7 +34,7 @@ public class ControllerServlet extends HttpServlet {
 
     private boolean checkCoords(HttpServletRequest request) throws IOException {
         Gson gson = new Gson();
-        HittingParams requestBody = gson.fromJson(request.getReader(), utils.HittingParams.class);
+        PointRequestBody requestBody = gson.fromJson(request.getReader(), PointRequestBody.class);
         if (requestBody == null){
             return false;
         }
@@ -44,6 +42,11 @@ public class ControllerServlet extends HttpServlet {
         Double x = requestBody.getX();
         Double y = requestBody.getY();
         Double r = requestBody.getR();
+        String timeZone = requestBody.getTimeZone();
+        request.setAttribute("x", x);
+        request.setAttribute("y", y);
+        request.setAttribute("r", r);
+        request.setAttribute("timeZone", timeZone);
         if (x != null && y != null && r != null) {
             return true;
         }
