@@ -1,7 +1,8 @@
 import validation from "./utils/Validation";
-import {xButtonsListening, yTextListening} from "./specific_functions/ButtonsListening";
+import {rTextListening, xButtonsListening, yTextListening} from "./specific_functions/ButtonsListening";
 import {getR, getRErrorField, getX, getXErrorField, getY, getYErrorField} from "./specific_functions/SelectionResults";
 import graphClickListener from "./utils/GraphClickCoordinates";
+import {getTable, updateTable} from "./specific_functions/Table";
 
 
 
@@ -13,6 +14,8 @@ xButtonsListening();
 //Проверка на change Y
 yTextListening();
 
+//Проверка на change Y
+rTextListening();
 
 graphClickListener();
 
@@ -30,38 +33,17 @@ fetch(`https://se.ifmo.ru/~s367403/lab1/getTable.php`)
 document.querySelector("#form-submit")?.addEventListener("click", function () {
     let validation_result = validation(getX(), getY(), getR(), getXErrorField(), getYErrorField(), getRErrorField());
     if (validation_result) {
-        timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         getTable();
     }
 })
 
 
-function updateTable(html: string) {
-    document.querySelector('#hit-results')!.innerHTML = "<tr>\n" +
-        "                                                                <th>X</th>\n" +
-        "                                                                <th>Y</th>\n" +
-        "                                                                <th>R</th>\n" +
-        "                                                                <th>Current time</th>\n" +
-        "                                                                <th>Script runtime</th>\n" +
-        "                                                                <th>Hit result</th>\n" +
-        "                                                            </tr>" + html;
 
-}
 
 function addRowToTable(html: string) {
     document.querySelector("#hit-results")!.innerHTML += html;
 }
 
-function getTable() {
-    fetch(`https://se.ifmo.ru/~s367403/lab1/index.php?x=${getX()?.value}&y=${getY()!.value.slice(0, 13)}&r=${getR()?.value}&timeZone=${timeZone}`)
-        .then(response => response.text())
-        .then(data => {
-            updateTable(data);
 
-        })
-        .catch(reason => {
-            console.error(reason)
-        })
-}
 
 
