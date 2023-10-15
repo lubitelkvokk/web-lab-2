@@ -1,7 +1,7 @@
 package controller;
 
 public enum ForwardElements {
-    AREA_CHECK("/areaCheck"), INDEX_JSP("/index");
+    AREA_CHECK("/areaCheck"), INDEX_JSP("/index"), RESULT_JSP("/result");
 
     private String name;
 
