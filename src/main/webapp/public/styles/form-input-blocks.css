@@ -1,7 +1,7 @@
 #form-block{
     font-family: 'Rubik One', sans-serif;
     /*font-family: monospace;*/
-    width: 55%;
+    width: 810px;
     display: inline-block;
     float: right;
 }
@@ -29,14 +29,20 @@
     text-shadow: 1px 1px 1px #000;
     border-radius: 5px;
     mix-blend-mode: multiply;
-    opacity: 80%;
+    opacity: 90%;
 
     background-color: #bb6789;
     margin:5px;
 }
-
+#y-input-block{
+    padding-left: 20px;
+}
 #y-input-block input{
     width: 180px;
+}
+
+#r-input-block{
+    padding-left: 50px;
 }
 
 #r-input-block input{
@@ -45,6 +51,7 @@
 
 #submit-container{
     margin-top: 20px;
+    padding-left: 90px;
 }
 
 #submit-container button{
