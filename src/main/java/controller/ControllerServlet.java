@@ -1,6 +1,7 @@
 package controller;
 
 
+import beans.Table;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -16,6 +17,11 @@ public class ControllerServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
+            Table table = (Table) request.getSession().getAttribute("table");
+            if (table == null) {
+                table = new Table();
+            }
+            request.getSession().setAttribute("table", table);
             if (checkCoords(request)) {
                 forward(request, response, ForwardElements.AREA_CHECK);
             } else {
