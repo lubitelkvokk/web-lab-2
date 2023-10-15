@@ -1,4 +1,6 @@
 import {setXPointCoord, setYPointCoord} from "../utils/GraphClickCoordinates";
+import {getX, getY} from "./SelectionResults";
+import {validateR} from "../utils/Validation";
 
 export function xButtonsListening() {
     const xButtons: NodeListOf<HTMLInputElement> = document.querySelectorAll('input[name="xChoice"]');
@@ -41,6 +43,20 @@ export function yTextListening() {
     yText?.addEventListener("change", (event: Event) => {
         const value = parseFloat((event.target as HTMLInputElement).value);
         setYPointCoord(value);
+    })
+}
+
+export function rTextListening() {
+    const rText: HTMLInputElement | null = document.querySelector('input[name="rChoice"]');
+
+    rText?.addEventListener("change", (event: Event) => {
+        let x = parseFloat(getX().value);
+        let y = parseFloat(getY().value);
+        if (validateR()){
+            setXPointCoord(x);
+            setYPointCoord(y);
+        }
+
     })
 }
 
