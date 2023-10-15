@@ -1,15 +1,14 @@
 import {getR, getX, getY} from "../specific_functions/SelectionResults";
-import {validateInputElement} from "./Validation";
+import {cleanAllErrors, validateInputElement, validateR} from "./Validation";
+import {getTable} from "../specific_functions/Table";
 
 const graphRoom = document.querySelector(".svg-graph")
 
 export default function graphClickListener() {
 
     graphRoom!.addEventListener('mousedown', function (event: MouseEvent) {
-        let isValid = validateInputElement(document.querySelector("#r"),
-            document.querySelector("#r-error"),
-            2,
-            5);
+        cleanAllErrors();
+        let isValid = validateR();
         if (isValid) {
             if (graphRoom !== null) {
                 let window = graphRoom.getBoundingClientRect();
@@ -20,7 +19,7 @@ export default function graphClickListener() {
 
                 setX(x);
                 setY(y);
-
+                getTable();
 
             } else {
 
@@ -86,6 +85,7 @@ function setY(y: number) {
         labelY.value = String(y);
         setYPointCoord(y);
     }
+
 }
 
 export function setYPointCoord(y: number) {
