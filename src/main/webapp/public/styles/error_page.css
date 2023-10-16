@@ -1,0 +1,17 @@
+.error_screen{
+    background: url("../images/error_screen_background.jpeg");
+}
+
+h1{
+    color: #e5e0ec;
+    -webkit-text-stroke: 1px black;
+}
+
+.content{
+    font-size: 30px;
+    padding-left: 300px;
+    padding-top: 200px;
+    color: #e5e0ec;
+    opacity: 90%;
+    /*border: solid 1px black;*/
+}
