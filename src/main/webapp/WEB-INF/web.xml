@@ -18,17 +18,54 @@
   <servlet>
     <servlet-name>AreaCheckServlet</servlet-name>
     <servlet-class>AreaCheckServlet</servlet-class>
+    <init-param>
+      <param-name>listings</param-name>
+      <param-value>false</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
   </servlet>
 
+<!--  <servlet>-->
+<!--    <servlet-name>result</servlet-name>-->
+<!--    <jsp-file>/public/result.jsp</jsp-file>-->
+<!--    <init-param>-->
+<!--      <param-name>listings</param-name>-->
+<!--      <param-value>false</param-value>-->
+<!--    </init-param>-->
+<!--    <load-on-startup>1</load-on-startup>-->
+<!--  </servlet>-->
+
+<!--  <servlet>-->
+<!--    <servlet-name>error_page</servlet-name>-->
+<!--    <jsp-file>/public/error_page.jsp</jsp-file>-->
+<!--    <init-param>-->
+<!--      <param-name>listings</param-name>-->
+<!--      <param-value>false</param-value>-->
+<!--    </init-param>-->
+<!--    <load-on-startup>1</load-on-startup>-->
+<!--  </servlet>-->
+
+
   <servlet>
-    <servlet-name>result</servlet-name>
-    <jsp-file>/public/result.jsp</jsp-file>
+    <servlet-name>filter</servlet-name>
+    <jsp-file>/public/error_page.jsp</jsp-file>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>result</servlet-name>
-    <url-pattern>/result</url-pattern>
+    <servlet-name>filter</servlet-name>
+    <url-pattern>^(?!/controller).*</url-pattern>
   </servlet-mapping>
+
+
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>error_page</servlet-name>-->
+<!--    <url-pattern>/error</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>result</servlet-name>-->
+<!--    <url-pattern>/result</url-pattern>-->
+<!--  </servlet-mapping>-->
 
   <servlet-mapping>
     <servlet-name>AreaCheckServlet</servlet-name>
@@ -44,4 +81,15 @@
   <servlet-name>ControllerServlet</servlet-name>
   <url-pattern>/controller</url-pattern>
 </servlet-mapping>
+
+<!--  <filter>-->
+<!--    <filter-name>MyFilter</filter-name>-->
+<!--    <filter-class>filters.CustomFilter</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>MyFilter</filter-name>-->
+<!--    <url-pattern>/*</url-pattern>-->
+<!--  </filter-mapping>-->
+
+
 </web-app>
