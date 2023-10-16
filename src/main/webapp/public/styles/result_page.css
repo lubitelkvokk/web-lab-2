@@ -1,0 +1,19 @@
+body{
+    background-image: url("../images/result_page_background_image.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.result{
+    display: inline-block;
+}
+
+.return{
+    font-size: 20px;
+    color: #e5e0ec;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 5px;
+    mix-blend-mode: multiply;
+    opacity: 80%;
+    text-align: right;
+}
