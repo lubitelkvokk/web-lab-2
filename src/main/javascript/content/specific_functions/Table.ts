@@ -23,7 +23,7 @@ export function getTable(x: number, y: number, r: number) {
         "timeZone": timeZone
     });
 
-    fetch("http://localhost:8080/web-lab-2.1/controller", {
+    fetch("http://localhost:11707/web-lab-2.1/controller", {
         method: 'POST',
         headers: myHeaders,
         body: raw,
