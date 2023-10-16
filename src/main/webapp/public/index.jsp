@@ -1,27 +1,26 @@
-<%@ page import="beans.Row" %>
 <jsp:useBean id="table" scope="session" type="beans.Table"/>
-<%--<%@ page import="beans.Row" %>--%>
-<% String path = "public";%>
-<!doctype html>
-<html lang="en">
+<%@ page import="beans.Row" %>
+<% String path = "public/";%>
+<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>web-lab</title>
-    <link rel="stylesheet" href="<%= path %>/styles/header.css">
-    <link rel="stylesheet" href="<%= path %>/styles/table.css">
-    <link rel="stylesheet" href="<%= path %>/styles/errors.css">
-    <link rel="stylesheet" href="<%= path %>/styles/input-values.css">
-    <link rel="stylesheet" href="<%= path %>/styles/form-input-blocks.css">
-    <link rel="stylesheet" href="<%= path %>/styles/graph.css">
-    <link rel="stylesheet" href="<%= path %>/styles/main_page.css">
+    <link rel="stylesheet" href="<%= path %>styles/header.css">
+    <link rel="stylesheet" href="<%= path %>styles/table.css">
+    <link rel="stylesheet" href="<%= path %>styles/errors.css">
+    <link rel="stylesheet" href="<%= path %>styles/input-values.css">
+    <link rel="stylesheet" href="<%= path %>styles/form-input-blocks.css">
+    <link rel="stylesheet" href="<%= path %>styles/graph.css">
+    <link rel="stylesheet" href="<%= path %>styles/main_page.css">
 </head>
 <body class="main_page">
 
-<jsp:include page="public/header.html"/>
-<jsp:include page="public/graph.jsp"/>
+<jsp:include page="header.html"/>
+<jsp:include page="graph.jsp"/>
+
 <div id="form-block">
     <div class="input-block" id="x-input-block">
         <label>
@@ -79,31 +78,39 @@
             Submit
         </button>
     </div>
-    <div class="tableContainer">
-        <table id="hit-results">
-            <% for (Row row : table.getTable()) {%>
-            <tr>
-                <td><%= row.getX()%>
-                </td>
-                <td><%= row.getY()%>
-                </td>
-                <td><%= row.getR()%>
-                </td>
-                <td><%= row.getCurrentTime()%>
-                </td>
-                <td><%= row.getScriptRuntime()%>
-                </td>
-                <td><%= row.getIsHit()%>
-                </td>
-            </tr>
-            <% } %>
-        </table>
-    </div>
 
-
+        <div class="tableContainer">
+            <table id="hit-results">
+                <thead>
+                <tr>
+                    <th>X</th>
+                    <th>Y</th>
+                    <th>R</th>
+                    <th>Current time</th>
+                    <th>Script runtime</th>
+                    <th>Hit result</th>
+                </tr>
+                </thead>
+                <% for (Row row : table.getTable()) {%>
+                <tr>
+                    <td><%= row.getX()%>
+                    </td>
+                    <td><%= row.getY()%>
+                    </td>
+                    <td><%= row.getR()%>
+                    </td>
+                    <td><%= row.getCurrentTime()%>
+                    </td>
+                    <td><%= row.getScriptRuntime()%>
+                    </td>
+                    <td><%= row.getIsHit()%>
+                    </td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
 </div>
 
-<script src="<%= path %>/bundle.js"></script>
-
 </body>
+<script src="<%= path %>bundle.js"></script>
 </html>
