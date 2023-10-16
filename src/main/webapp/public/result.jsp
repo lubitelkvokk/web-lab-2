@@ -7,35 +7,52 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!doctype html>
+<% String path = "";%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Hitting result</title>
+    <link rel="stylesheet" href="<%= path %>styles/table.css">
+    <link rel="stylesheet" href="<%= path %>styles/main_page.css">
+    <link rel="stylesheet" href="<%= path %>styles/result_page.css">
 </head>
 <body>
 
-<table>
-    <thead>
-    <tr>
-        <th>X</th>
-        <th>Y</th>
-        <th>R</th>
-        <th>Current time</th>
-        <th>Script runtime</th>
-        <th>Hit result</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td><%= lastCheck.getY() %></td>
-        <td><%= lastCheck.getY() %></td>
-        <td><%= lastCheck.getR() %></td>
-        <td><%= lastCheck.getCurrentTime() %></td>
-        <td><%= lastCheck.getScriptRuntime() %></td>
-        <td><%= lastCheck.getIsHit() %></td>
-    </tr>
-    </tbody>
-</table>
-<a href="controller">Вернуться к форме</a>
+<div class="result">
+    <table>
+        <thead>
+        <tr>
+            <th>X</th>
+            <th>Y</th>
+            <th>R</th>
+            <th>Current time</th>
+            <th>Script runtime</th>
+            <th>Hit result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><%= lastCheck.getX() %>
+            </td>
+            <td><%= lastCheck.getY() %>
+            </td>
+            <td><%= lastCheck.getR() %>
+            </td>
+            <td><%= lastCheck.getCurrentTime() %>
+            </td>
+            <td><%= lastCheck.getScriptRuntime() %>
+            </td>
+            <td><%= lastCheck.getIsHit() %>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="return">
+        <a href="http://localhost:11707/web-lab-2.1/controller">Вернуться к форме</a>
+    </div>
+</div>
+
+
 </body>
-</html>s
+</html>
