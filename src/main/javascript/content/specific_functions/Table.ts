@@ -30,12 +30,12 @@ export function getTable(x: number, y: number, r: number) {
         redirect: 'follow'
     })
         .then(response => {
-            // if (response.redirected) {
-                return response.text()
-                // window.location.href = response.url;
-            // }
+            if (response.redirected) {
+                // return response.text()
+                window.location.href = response.url;
+            }
         })
-        .then(result => document.body.innerHTML = result)
+        // .then(result => document.body.innerHTML = result)
         .catch(error => console.log('error', error));
 }
 
