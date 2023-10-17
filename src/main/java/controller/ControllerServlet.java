@@ -1,6 +1,5 @@
 package controller;
 
-
 import beans.Table;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
@@ -10,7 +9,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import utils.PointRequestBody;
-
 import java.io.IOException;
 
 public class ControllerServlet extends HttpServlet {
@@ -22,13 +20,15 @@ public class ControllerServlet extends HttpServlet {
                 table = new Table();
             }
             request.getSession().setAttribute("table", table);
-            if (checkCoords(request)) {
+            if (checkRequestBody(request)) {
                 forward(request, response, ForwardElements.AREA_CHECK);
             } else {
                 forward(request, response, ForwardElements.INDEX_JSP);
             }
-        } catch (ServletException e) {
-            // something bad
+        } catch (NumberFormatException | ServletException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // Установка кода состояния 404
+            request.getSession().setAttribute("error_message", e.getMessage());
+            response.sendRedirect(request.getContextPath() + "/error");
         }
     }
 
@@ -38,25 +38,18 @@ public class ControllerServlet extends HttpServlet {
     }
 
 
-    private boolean checkCoords(HttpServletRequest request) throws IOException {
+    private boolean checkRequestBody(HttpServletRequest request) throws IOException {
         Gson gson = new Gson();
         PointRequestBody requestBody = gson.fromJson(request.getReader(), PointRequestBody.class);
-        if (requestBody == null){
+        setPointParamsToRequest(requestBody, request);
+        if (requestBody == null) {
             return false;
         }
-        // Получение параметров из объекта requestBody
-        Double x = requestBody.getX();
-        Double y = requestBody.getY();
-        Double r = requestBody.getR();
-        String timeZone = requestBody.getTimeZone();
-        request.setAttribute("x", x);
-        request.setAttribute("y", y);
-        request.setAttribute("r", r);
-        request.setAttribute("timeZone", timeZone);
-        if (x != null && y != null && r != null) {
-            return true;
-        }
-        return false;
+        return true;
+    }
+
+    public void setPointParamsToRequest(PointRequestBody pointRequestBody, HttpServletRequest request){
+        request.setAttribute("pointRequestBody", pointRequestBody);
     }
 
     public void forward(HttpServletRequest request,
