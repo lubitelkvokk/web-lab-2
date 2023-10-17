@@ -23,18 +23,19 @@ export function getTable(x: number, y: number, r: number) {
         "timeZone": timeZone
     });
 
-    fetch("http://localhost:11707/web-lab-2.1/controller", {
+    fetch("http://localhost:8080/web-lab-2.1/controller", {
         method: 'POST',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
     })
         .then(response => {
-            if (response.redirected) {
-                window.location.href = response.url;
-            }
+            // if (response.redirected) {
+                return response.text()
+                // window.location.href = response.url;
+            // }
         })
-        .then(result => console.log(result))
+        .then(result => document.body.innerHTML = result)
         .catch(error => console.log('error', error));
 }
 

@@ -7,7 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!doctype html>
-<% String path = "";%>
+<% String path = application.getContextPath() +  "/public/";%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -49,7 +49,7 @@
     </table>
 
     <div class="return">
-        <a href="http://localhost:11707/web-lab-2.1/controller">Вернуться к форме</a>
+        <a href="http://localhost:8080/web-lab-2.1/controller">Вернуться к форме</a>
     </div>
 </div>
 

@@ -65,11 +65,20 @@ public class AreaCheckServlet extends HttpServlet {
 
             response.setStatus(HttpServletResponse.SC_FOUND); // Установка кода состояния 302 (Found)
 
-            response.sendRedirect(request.getContextPath() + ForwardElements.RESULT_JSP.getName());
+//            response.sendRedirect(request.getContextPath() + ForwardElements.RESULT_JSP.getName());
+
+            ServletContext servletContext = getServletContext();
+            RequestDispatcher requestDispatcher = servletContext
+                    .getRequestDispatcher("/result");
+            System.out.println("AREA CHECK SERVLET");
+            requestDispatcher.forward(request, response);
         } catch (InputException e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // Установка кода состояния 404
             request.getSession().setAttribute("error_message", e.getMessage());
-            response.sendRedirect(request.getContextPath() + ForwardElements.ERROR_PAGE.getName());
+//            response.sendRedirect(request.getContextPath() + ForwardElements.ERROR_PAGE.getName());
+            ServletContext servletContext = getServletContext();
+            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(ForwardElements.ERROR_PAGE.getName());
+            requestDispatcher.forward(request, response);
         }
 
     }
