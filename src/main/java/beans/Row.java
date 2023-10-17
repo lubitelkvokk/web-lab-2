@@ -10,9 +10,6 @@ public class Row implements Serializable {
     private Long scriptRuntime;
     private boolean isHit;
 
-    public Row(){
-    }
-
     public Row(double x, double y, double r, String current, Long scriptRuntime, boolean isHit){
         this.x = x;
         this.y = y;

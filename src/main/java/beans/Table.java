@@ -4,19 +4,17 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class Table implements Serializable {
-    private LinkedList<Row> table = new LinkedList<>();
+    private final LinkedList<Row> table = new LinkedList<>();
 
-    public Table(){}
-
-    public Table(LinkedList<Row> table){
-        this.table = table;
+    public Table() {
     }
 
     public LinkedList<Row> getTable() {
-        return table;
+        return (LinkedList<Row>) table.clone();
     }
 
-    public void setTable(LinkedList<Row> table) {
-        this.table = table;
+    public void addRow(Row row) {
+        table.add(row);
     }
+
 }
