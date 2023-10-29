@@ -28,23 +28,30 @@ public class AreaCheckServlet extends HttpServlet {
                     getTimeStringByTimeZone(params.getTimeZone()),
                     scriptRuntime, isHit);
 
+
             Table table = (Table) request.getSession().getAttribute("table");
+//            if (table == null) {
+//                table = new Table();
+//            }
             table.addRow(lastCheck);
 
             request.getSession().setAttribute("table", table);
 
             request.getSession().setAttribute("lastCheck", lastCheck);
 
-            response.setStatus(HttpServletResponse.SC_FOUND); // Установка кода состояния 302 (Found)
+            // указываем, что мы делаем перенаправление из сервлета
+            request.getSession().setAttribute("redirection", true);
 
             response.sendRedirect(request.getContextPath() + "/result");
         } catch (InputException e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // Установка кода состояния 404
             request.getSession().setAttribute("error_message", e.getMessage());
+
+            // указываем, что мы делаем перенаправление из сервлета
+            request.getSession().setAttribute("redirection", true);
             response.sendRedirect(request.getContextPath() + "/error");
         }
     }
-
 
     private PointRequestBody getPointParamsBody(HttpServletRequest request) throws InputException {
         PointRequestBody pointRequestBody = (PointRequestBody) request.getAttribute("pointRequestBody");
