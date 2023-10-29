@@ -1,6 +1,8 @@
 package controller;
 
 import beans.Table;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
@@ -14,12 +16,14 @@ import java.io.IOException;
 public class ControllerServlet extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         try {
             Table table = (Table) request.getSession().getAttribute("table");
-            if (table == null) {
-                table = new Table();
-            }
-            request.getSession().setAttribute("table", table);
+//            if (table == null) {
+//                table = new Table();
+//            }
+//            request.getSession().setAttribute("table", table);
+
             if (checkRequestBody(request)) {
                 forward(request, response, ForwardElements.AREA_CHECK);
             } else {
@@ -28,6 +32,14 @@ public class ControllerServlet extends HttpServlet {
         } catch (NumberFormatException | ServletException e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // Установка кода состояния 404
             request.getSession().setAttribute("error_message", e.getMessage());
+            // указываем, что мы делаем перенаправление из сервлета
+            request.getSession().setAttribute("redirection", true);
+            response.sendRedirect(request.getContextPath() + "/error");
+        } catch (JsonParseException e) {
+            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR); // Установка кода состояния 404
+            request.getSession().setAttribute("error_message", "Неверный формат JSON");
+            // указываем, что мы делаем перенаправление из сервлета
+            request.getSession().setAttribute("redirection", true);
             response.sendRedirect(request.getContextPath() + "/error");
         }
     }
