@@ -5,6 +5,37 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
+
+  <filter>
+    <filter-name>tableFilter</filter-name>
+    <filter-class>filters.TableFilter</filter-class>
+    <init-param>
+      <param-name>active</param-name>
+      <param-value>true</param-value>
+    </init-param>
+  </filter>
+
+<!--  <filter>-->
+<!--    <filter-name>customFilter</filter-name>-->
+<!--    <filter-class>filters.CustomFilter</filter-class>-->
+<!--    <init-param>-->
+<!--      <param-name>active</param-name>-->
+<!--      <param-value>true</param-value>-->
+<!--    </init-param>-->
+<!--  </filter>-->
+
+
+  <filter-mapping>
+    <filter-name>tableFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+<!--  <filter-mapping>-->
+<!--    <filter-name>customFilter</filter-name>-->
+<!--    <url-pattern>/*</url-pattern>-->
+<!--  </filter-mapping>-->
+
   <servlet>
     <servlet-name>ControllerServlet</servlet-name>
     <servlet-class>controller.ControllerServlet</servlet-class>
@@ -72,14 +103,7 @@
   <url-pattern>/controller</url-pattern>
 </servlet-mapping>
 
-<!--  <filter>-->
-<!--    <filter-name>MyFilter</filter-name>-->
-<!--    <filter-class>filters.CustomFilter</filter-class>-->
-<!--  </filter>-->
-<!--  <filter-mapping>-->
-<!--    <filter-name>MyFilter</filter-name>-->
-<!--    <url-pattern>/*</url-pattern>-->
-<!--  </filter-mapping>-->
+
 
 
 </web-app>
