@@ -1,8 +1,10 @@
+
 <jsp:useBean id="table" scope="session" type="beans.Table"/>
 <%@ page import="beans.Row" %>
 <% String path = "public/";%>
 <!DOCTYPE html>
 <head>
+    <base href="${pageContext.request.contextPath}">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -15,6 +17,7 @@
     <link rel="stylesheet" href="<%= path %>styles/form-input-blocks.css">
     <link rel="stylesheet" href="<%= path %>styles/graph.css">
     <link rel="stylesheet" href="<%= path %>styles/main_page.css">
+
 </head>
 <body class="main_page">
 
@@ -114,3 +117,4 @@
 </body>
 <script src="<%= path %>bundle.js"></script>
 </html>
+<% session.setAttribute("isForward", false); %>
