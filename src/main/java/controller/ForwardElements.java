@@ -4,7 +4,7 @@ public enum ForwardElements {
     AREA_CHECK("/areaCheck"),
     INDEX_JSP("/public/index.jsp"),
     RESULT_JSP("/public/result.jsp"),
-    ERROR_PAGE("/public/error_page.jsp");
+    ERROR_PAGE("/error_page");
 
     private String name;
 
